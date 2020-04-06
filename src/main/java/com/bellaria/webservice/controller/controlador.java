@@ -20,12 +20,7 @@ public class controlador {
         this.pedidosService = pedidosService;
         this.productosService = productosService;
     }
-    
-    @RequestMapping("/")
-    public String funciona() {
-        return "FUNCIONA!";
-    }
-    
+
     /**
      * Cuando el usuario quiera iniciar sesión con la app accederá a este enlace 
      * que a su vez hara la llamada a la función pasando por parametros el email 
