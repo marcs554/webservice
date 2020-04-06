@@ -8,6 +8,10 @@ import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+/**
+ * 
+ * @author Marcos Rodríguez Breijo
+ */
 @RestController
 public class controlador {
 
@@ -23,24 +27,21 @@ public class controlador {
 
     /**
      * Cuando el usuario quiera iniciar sesión con la app accederá a este enlace 
-     * que a su vez hara la llamada a la función pasando por parametros el email 
-     * y el password
-     * ----------------------------------------------------------------------------
-     * @param email
-     * @param password
-     * @return 
+     * que a su vez hará la llamada a la función pasando por parametros el email 
+     * y el password.
+     * @param email Ingresa el email del usuario.
+     * @param password Ingresa la contraseña del usuario.
+     * @return Retorna un valor booleano confirmando si existe (true) o no (false).
     */
     @GetMapping("/login")
     public boolean login(@RequestParam("email") String email, @RequestParam("password") String password) {
-        System.out.println(clienteService.loginCliente(email, password));
         return clienteService.loginCliente(email, password);
     }
     
     /**
-     * Cuando el cliente quiera listar todos sus pedidos la app llamará a este
-     * enlace que a su vez hara la llamada a la función
-     * --------------------------------------------------------------
-     * @return 
+     * Cuando el usuario quiera listar todos sus pedidos la app llamará a este
+     * enlace que a su vez hará la llamada a la función.
+     * @return Retorna la lista de productos almacenada en la base de datos.
     */
     @RequestMapping("/productos")
     public List<Productos> getAllProductos() {
@@ -52,10 +53,9 @@ public class controlador {
     /**
      * Cuando el cliente quiera listar todos sus pedidos la app llamará a este
      * enlace que a su vez hara la llamada a la función recibiendo por parametro 
-     * el email
-     * --------------------------------------------------------------------------
-     * @param email
-     * @return 
+     * el email.
+     * @param email Ingresa el campo email del usuario.
+     * @return Retorna la lista de pedidos del usuario de la base de datos a traves del campo email.
      */
      
     @GetMapping("/pedidoscliente")
@@ -64,14 +64,13 @@ public class controlador {
     }
     
     /**
-     * Se hará la llamada a este enlace que a su vez hara la llamda a la función 
-     * cuando el usuario quiera crearse una cuenta nueva
-     * ------------------------------------------------------------------------------
-     * @param nombre
-     * @param localizacion
-     * @param email
-     * @param password
-     * @return 
+     * Cuando el usuario se registre por primera vez la app irá a este enlace para 
+     * almacenar los campos: nombre, localización, email, password.
+     * @param nombre Ingresa el nombre de la empresa.
+     * @param localizacion Ingresa la localización de la empresa .
+     * @param email Ingresa el email del usuario.
+     * @param password Ingresa la contraseña del usuario.
+     * @return Retorna un valor booleano confirmando si se creó la cuenta con exito (true) o no (false).
     */
     @GetMapping("/nuevousuario")
     public boolean signUp(@RequestParam("nombre") String nombre, @RequestParam("localizacion") String localizacion,
@@ -81,13 +80,12 @@ public class controlador {
     
     /**
      * Se hará la llamada a este enlace que a su vez hara la llamada a la función 
-     * cuando el usuario quiera realizar un nuevo pedido
-     * -----------------------------------------------------------------------
-     * @param cantidad
-     * @param importe
-     * @param idCliente
-     * @param idProducto
-     * @return 
+     * cuando el usuario quiera realizar un nuevo pedido.
+     * @param cantidad Ingresa la cantidad (en KGs).
+     * @param importe Ingresa el importe total: cantidad * precioActual.
+     * @param idCliente Ingresa el id del cliente el cual hace el pedido.
+     * @param idProducto Ingresa el id del producto el se quiere adquirir.
+     * @return Retorna un valor Integer. Si el número es mayor que 0 es que el pedido se realizó satisfactoriamente.
     */
     @GetMapping("/nuevopedido")
     public int realizarPedido(@RequestParam("cantidad") int cantidad, @RequestParam("importe") float importe, 
@@ -98,9 +96,8 @@ public class controlador {
     /**
      * Cuando el usuario quiera anular uno de sus pedidos la app hara la llamada
      * a este enlace que a su vez hara la llamada a la función
-     * --------------------------------------------------------------------------
-     * @param id
-     * @return 
+     * @param id Ingresa el id del usuario.
+     * @return Retorna un valor Integer. Si el número es mayor que 0 es que la anulación del pedido se hizo correctamente
     */
     @GetMapping("/anularpedido")
     public int anularPedido(@RequestParam("id") int id) {

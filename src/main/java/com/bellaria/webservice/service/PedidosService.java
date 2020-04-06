@@ -5,6 +5,10 @@ import com.bellaria.webservice.repository.PedidosRepository;
 import java.util.List;
 import org.springframework.stereotype.Service;
 
+/**
+ * 
+ * @author Marcos Rodríguez Breijo
+ */
 @Service
 public class PedidosService {
 
@@ -19,7 +23,7 @@ public class PedidosService {
      * del usuario.
      * -------------------------------------------------------------------
      * @param email
-     * @return 
+     * @return Retorna una lista de pedidos que coincida con el email 
      */
     public List<Pedidos> listarPedidosCliente(String email) {
         return pedidosRepository.pedidosCliente(email);
@@ -33,7 +37,7 @@ public class PedidosService {
      * @param importe
      * @param idCliente
      * @param idProducto
-     * @return 
+     * @return Retorna el número de filas añadidas en la tabla pedidos.
      */
     public int realizarPedido(int cantidad, float importe, int idCliente, int idProducto) {
         return pedidosRepository.nuevoPedido(cantidad, importe, idCliente, idProducto);
@@ -45,7 +49,7 @@ public class PedidosService {
      * del pedido
      * -----------------------------------------------------------------------------
      * @param id
-     * @return 
+     * @return Retorna el número de filas que se modificaron en la tabla pedidos.
      */
     public int anularPedido(int id) {
         return pedidosRepository.anularPedido(id);

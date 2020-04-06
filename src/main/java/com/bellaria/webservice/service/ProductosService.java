@@ -5,6 +5,10 @@ import com.bellaria.webservice.repository.ProductosRepository;
 import java.util.List;
 import org.springframework.stereotype.Service;
 
+/**
+ * 
+ * @author Marcos Rodríguez Breijo
+ */
 @Service
 public class ProductosService {
 
@@ -17,7 +21,7 @@ public class ProductosService {
     /**
      * Lista todos los productos disponibles en la base de datos
      * ------------------------------------------------------------
-     * @return 
+     * @return Retorna una lista con todos los productos de la tabla productos.
      */
     public List<Productos> listarProductos() {
 

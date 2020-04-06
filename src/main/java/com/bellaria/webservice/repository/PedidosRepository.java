@@ -7,26 +7,28 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
+/**
+ * 
+ * @author Marcos Rodríguez Breijo
+ */
 public interface PedidosRepository extends JpaRepository<Pedidos, Integer> {
 
     /**
      * Retorna una lista de pedidos de la tabla pedidos de la base de datos
      * que coincida con el parametro: email.
-     * ---------------------------------------------------------------------
      * @param email
-     * @return 
+     * @return  Retorna una lista de pedidos que coincidan con el parametro: email.
      */
     @Query("from Pedidos as p join fetch p.cliente where p.cliente.email = ?1")
     List<Pedidos> pedidosCliente(String email);
 
     /**
-     * Inserta una nueva fila en la tabla pedidos
-     * --------------------------------------------------------
+     * Inserta una nueva fila en la tabla pedidos.
      * @param cantidad
      * @param importe
      * @param idCliente
      * @param idProducto
-     * @return 
+     * @return Retorna un integer para indicar cuantas filas se han añadido.
      */
     @Transactional
     @Modifying
@@ -35,10 +37,9 @@ public interface PedidosRepository extends JpaRepository<Pedidos, Integer> {
     int nuevoPedido(int cantidad, float importe, int idCliente, int idProducto);
 
     /**
-     * Cambia el valor del campo idestado de la tabla pedidos a 5 'Anulado'
-     * ----------------------------------------------------------------------
+     * Cambia el valor del campo idestado de la tabla pedidos a 5 'Anulado'.
      * @param id
-     * @return 
+     * @return Retorna un integer para indicar cuantas filas se han añadido.
      */
     @Transactional
     @Modifying

@@ -3,6 +3,10 @@ package com.bellaria.webservice.service;
 import com.bellaria.webservice.repository.ClienteRepository;
 import org.springframework.stereotype.Service;
 
+/**
+ * 
+ * @author Marcos Rodríguez Breijo
+ */
 @Service
 public class ClienteService {
 
@@ -13,11 +17,10 @@ public class ClienteService {
     }
 
     /**
-     * Comprueba si el el email y la contraseña del cliente son correctos 
-     * ---------------------------------------------------------------
+     * Comprueba si el el email y la contraseña del cliente son correctos.
      * @param userEmail
      * @param password
-     * @return 
+     * @return Retorna un valor booleano, true si el userEmail y password son correctos y false si son incorrectos.
      */
     public boolean loginCliente(String userEmail, String password) {
         if (clienteRepository.findByEmailAndPassword(userEmail, password).size() == 1) {
@@ -28,13 +31,12 @@ public class ClienteService {
     }
 
     /**
-     * Registra una nueva cuenta de usuario
-     * -----------------------------------------------
+     * Registra una nueva cuenta de usuario.
      * @param nombreEmpresa
      * @param localidad
      * @param email
      * @param password
-     * @return 
+     * @return Retorna un valor booleano, true si se añadio correctamente y false si ya existe un usuario con el mismo nombreEmpresa y email.
      */
     public boolean addNewCliente(String nombreEmpresa, String localidad, String email, String password) {
         if (clienteRepository.findByNombreEmpresaAndEmail(nombreEmpresa, email).isEmpty()) {

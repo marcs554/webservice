@@ -7,21 +7,23 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
+/**
+ * 
+ * @author Marcos Rodríguez Breijo
+ */
 public interface ClienteRepository extends JpaRepository<Clientes, Integer> {
 
     /**
      * Retorna una lista de los clientes que están almacenados en la base de datos
      * que coincidan con los parametros: userEmail y password.
-     * ------------------------------------------------------------------------------
-     * @param userEmail
-     * @param password
-     * @return 
+     * @param userEmail 
+     * @param password 
+     * @return Retorna una lista de clientes que coincidan con los parametros: userEmail y password.
      */
     List<Clientes> findByEmailAndPassword(String userEmail, String password);
 
     /**
      * Inserta una nueva fila en la tabla clientes.
-     * --------------------------------------------------------
      * @param nombre
      * @param localizacion
      * @param email
@@ -35,10 +37,9 @@ public interface ClienteRepository extends JpaRepository<Clientes, Integer> {
     /**
      * Retorna una lista de los usuario que están almacenados en la base de datos
      * que coincidan con los parametros: nombre y email.
-     * ---------------------------------------------------------------------------
      * @param nombre
      * @param email
-     * @return 
+     * @return  Retorna una lista de clientes que coincidan con los parametros: nombre y email.
      */
     List<Clientes> findByNombreEmpresaAndEmail(String nombre, String email);
 
