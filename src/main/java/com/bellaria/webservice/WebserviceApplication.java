@@ -7,7 +7,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class WebserviceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(WebserviceApplication.class, args);
+		try {
+                    SpringApplication.run(WebserviceApplication.class, args);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
 	}
 
 }
