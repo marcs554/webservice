@@ -37,28 +37,17 @@ public class PedidosService {
      * @param importe
      * @param idCliente
      * @param idProducto
-     * @return
      */
-    public boolean realizarPedido(int cantidad, float importe, int idCliente, int idProducto) {
-        if (pedidosRepository.nuevoPedido(cantidad, importe, idCliente, idProducto) > 0) {
-            return true;
-        } else {
-            return false;
-        }
+    public void realizarPedido(int cantidad, float importe, int idCliente, int idProducto) {
+        pedidosRepository.nuevoPedido(cantidad, importe, idCliente, idProducto);
     }
     /**
      * Si el cliente quiere anular su pedido se cambiará el valor del campo
      * idestado para que su estado cambie a anulado, pasando como parametro el id 
-     * del pedido. Retornará un valor booleano, (true) si se modificó la fila
-     * en la tabla pedidos, (false) si no se modificó ninguna fila en la tabla pedidos.
+     * del pedido. 
      * @param id
-     * @return
      */
-    public boolean anularPedido(int id) {
-        if(pedidosRepository.anularPedido(id) > 0) {
-            return true;
-        } else {
-            return false;
-        }
+    public void anularPedido(int id) {
+       pedidosRepository.anularPedido(id);
     }
 }

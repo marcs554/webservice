@@ -1,6 +1,8 @@
 package com.bellaria.webservice.service;
 
+import com.bellaria.webservice.domain.Clientes;
 import com.bellaria.webservice.repository.ClienteRepository;
+import java.util.List;
 import org.springframework.stereotype.Service;
 
 /**
@@ -20,13 +22,14 @@ public class ClienteService {
      * Comprueba si el el email y la contraseña del cliente son correctos.
      * @param userEmail
      * @param password
-     * @return Retorna un valor booleano, true si el userEmail y password son correctos y false si son incorrectos.
+     * @return Retorna una lista con un objeto Clientes donde se almacena toda la
+     * información del cliente.
      */
-    public boolean loginCliente(String userEmail, String password) {
-        if (clienteRepository.findByEmailAndPassword(userEmail, password).size() == 1) {
-            return true;
+    public List<Clientes> loginCliente(String userEmail, String password) {
+        if (clienteRepository.findByEmailAndPassword(userEmail, password).isEmpty()) {
+            return clienteRepository.findByEmailAndPassword(userEmail, password);
         } else {
-            return false;
+            return null;
         }
     }
 
@@ -36,7 +39,7 @@ public class ClienteService {
      * @param localidad
      * @param email
      * @param password
-     * @return Retorna un valor booleano, true si se añadio correctamente y false si ya existe un usuario con el mismo nombreEmpresa y email.
+     * @return Retorna un valor boolean, true si se añadio correctamente y false si ya existe un usuario con el mismo nombreEmpresa y email.
      */
     public boolean addNewCliente(String nombreEmpresa, String localidad, String email, String password) {
         if (clienteRepository.findByNombreEmpresaAndEmail(nombreEmpresa, email).isEmpty()) {

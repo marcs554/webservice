@@ -31,17 +31,17 @@ public class controlador {
      * y el password.
      * @param email Ingresa el email del usuario.
      * @param password Ingresa la contraseña del usuario.
-     * @return Retorna un valor booleano confirmando si existe (true) o no (false).
+     * @return Retorna un json con toda la información del cliente.
     */
     @GetMapping("/login")
-    public boolean login(@RequestParam("email") String email, @RequestParam("password") String password) {
+    public List<Clientes> login(@RequestParam("email") String email, @RequestParam("password") String password) {
         return clienteService.loginCliente(email, password);
     }
     
     /**
      * Cuando el usuario quiera listar todos sus pedidos la app llamará a este
      * enlace que a su vez hará la llamada a la función.
-     * @return Retorna la lista de productos almacenada en la base de datos.
+     * @return Retorna un json de productos almacenada en la base de datos.
     */
     @RequestMapping("/productos")
     public List<Productos> getAllProductos() {
@@ -52,10 +52,10 @@ public class controlador {
     
     /**
      * Cuando el cliente quiera listar todos sus pedidos la app llamará a este
-     * enlace que a su vez hara la llamada a la función recibiendo por parametro 
+     * enlace que a su vez hará la llamada a la función recibiendo por parametro 
      * el email.
      * @param email Ingresa el campo email del usuario.
-     * @return Retorna la lista de pedidos del usuario de la base de datos a traves del campo email.
+     * @return Retorna un json de pedidos del usuario de la base de datos a traves del campo email.
      */
      
     @GetMapping("/pedidoscliente")
@@ -70,10 +70,10 @@ public class controlador {
      * @param localizacion Ingresa la localización de la empresa .
      * @param email Ingresa el email del usuario.
      * @param password Ingresa la contraseña del usuario.
-     * @return Retorna un valor booleano confirmando si se creó la cuenta con exito (true) o no (false).
+     * @return Retorna un valor boolean confirmando si se creó la cuenta con exito (true) o no (false).
     */
     @GetMapping("/nuevousuario")
-    public boolean signUp(@RequestParam("nombre") String nombre, @RequestParam("localizacion") String localizacion,
+    public boolean registrarse(@RequestParam("nombre") String nombre, @RequestParam("localizacion") String localizacion,
             @RequestParam("email") String email, @RequestParam("password") String password){
         return clienteService.addNewCliente(nombre, localizacion, email, password);
     }
@@ -85,22 +85,20 @@ public class controlador {
      * @param importe Ingresa el importe total: cantidad * precioActual.
      * @param idCliente Ingresa el id del cliente el cual hace el pedido.
      * @param idProducto Ingresa el id del producto el se quiere adquirir.
-     * @return Retorna un valor Integer. Si el número es mayor que 0 es que el pedido se realizó satisfactoriamente.
     */
     @GetMapping("/nuevopedido")
-    public boolean realizarPedido(@RequestParam("cantidad") int cantidad, @RequestParam("importe") float importe, 
+    public void realizarPedido(@RequestParam("cantidad") int cantidad, @RequestParam("importe") float importe, 
             @RequestParam("idcliente") int idCliente, @RequestParam("idproducto") int idProducto) {
-        return pedidosService.realizarPedido(cantidad, importe, idCliente, idProducto);
+        pedidosService.realizarPedido(cantidad, importe, idCliente, idProducto);
     }
     
     /**
      * Cuando el usuario quiera anular uno de sus pedidos la app hara la llamada
      * a este enlace que a su vez hara la llamada a la función
-     * @param id Ingresa el id del usuario.
-     * @return Retorna un valor Integer. Si el número es mayor que 0 es que la anulación del pedido se hizo correctamente
+     * @param id Ingresa el id del pedido.
     */
     @GetMapping("/anularpedido")
-    public boolean anularPedido(@RequestParam("id") int id) {
-        return pedidosService.anularPedido(id);
+    public void anularPedido(@RequestParam("id") int id) {
+        pedidosService.anularPedido(id);
     }
 }
