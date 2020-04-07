@@ -26,7 +26,7 @@ public class ClienteService {
      * información del cliente.
      */
     public List<Clientes> loginCliente(String userEmail, String password) {
-        if (clienteRepository.findByEmailAndPassword(userEmail, password).isEmpty()) {
+        if (!clienteRepository.findByEmailAndPassword(userEmail, password).isEmpty()) {
             return clienteRepository.findByEmailAndPassword(userEmail, password);
         } else {
             return null;
