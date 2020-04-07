@@ -20,7 +20,6 @@ public class ProductosService {
 
     /**
      * Lista todos los productos disponibles en la base de datos
-     * ------------------------------------------------------------
      * @return Retorna una lista con todos los productos de la tabla productos.
      */
     public List<Productos> listarProductos() {

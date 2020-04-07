@@ -88,7 +88,7 @@ public class controlador {
      * @return Retorna un valor Integer. Si el número es mayor que 0 es que el pedido se realizó satisfactoriamente.
     */
     @GetMapping("/nuevopedido")
-    public int realizarPedido(@RequestParam("cantidad") int cantidad, @RequestParam("importe") float importe, 
+    public boolean realizarPedido(@RequestParam("cantidad") int cantidad, @RequestParam("importe") float importe, 
             @RequestParam("idcliente") int idCliente, @RequestParam("idproducto") int idProducto) {
         return pedidosService.realizarPedido(cantidad, importe, idCliente, idProducto);
     }
@@ -100,7 +100,7 @@ public class controlador {
      * @return Retorna un valor Integer. Si el número es mayor que 0 es que la anulación del pedido se hizo correctamente
     */
     @GetMapping("/anularpedido")
-    public int anularPedido(@RequestParam("id") int id) {
+    public boolean anularPedido(@RequestParam("id") int id) {
         return pedidosService.anularPedido(id);
     }
 }
