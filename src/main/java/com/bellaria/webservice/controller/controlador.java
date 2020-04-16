@@ -42,7 +42,7 @@ public class controlador {
      * @param password Ingresa la contraseña del usuario.
      * @return Retorna un json con toda la información del cliente.
     */
-   @GetMapping("/login")
+   /*@GetMapping("/login")
     public List<Clientes> login(@RequestParam("email") String email, @RequestParam("password") String password) {
         return clienteService.loginCliente(email, password);
     }
@@ -52,7 +52,7 @@ public class controlador {
      * enlace que a su vez hará la llamada a la función.
      * @return Retorna un json de productos almacenada en la base de datos.
     */
-    @RequestMapping("/productos")
+    /*@RequestMapping("/productos")
     public List<Productos> getAllProductos() {
         List<Productos> listarProductos = productosService.listarProductos();
         
@@ -67,7 +67,7 @@ public class controlador {
      * @return Retorna un json de pedidos del usuario de la base de datos a traves del campo idCliente.
      */
      
-    @GetMapping("/pedidoscliente")
+    /*@GetMapping("/pedidoscliente")
     public List<Pedidos> getPedidosCliente(@RequestParam("idcliente") int idCliente) {
         return pedidosService.listarPedidosCliente(idCliente);
     }
@@ -81,7 +81,7 @@ public class controlador {
      * @param password Ingresa la contraseña del usuario.
      * @return Retorna un valor boolean confirmando si se creó la cuenta con exito (true) o no (false).
     */
-    @PostMapping("/nuevousuario")
+    /*@PostMapping("/nuevousuario")
     public List<Clientes> registrarse(@RequestParam("nombre") String nombre, @RequestParam("localizacion") String localizacion,
             @RequestParam("email") String email, @RequestParam("password") String password){
         return clienteService.addNewCliente(nombre, localizacion, email, password);
@@ -95,7 +95,7 @@ public class controlador {
      * @param idCliente Ingresa el id del cliente el cual hace el pedido.
      * @param idProducto Ingresa el id del producto el se quiere adquirir.
     */
-    @GetMapping("/nuevopedido")
+    /*@GetMapping("/nuevopedido")
     public void realizarPedido(@RequestParam("cantidad") int cantidad, @RequestParam("importe") float importe, 
             @RequestParam("idcliente") int idCliente, @RequestParam("idproducto") int idProducto) {
         pedidosService.realizarPedido(cantidad, importe, idCliente, idProducto);
@@ -106,8 +106,8 @@ public class controlador {
      * a este enlace que a su vez hara la llamada a la función
      * @param idCliente Ingresa el id del pedido.
     */
-    @GetMapping("/anularpedido")
+    /*@GetMapping("/anularpedido")
     public void anularPedido(@RequestParam("idcliente") int idCliente) {
         pedidosService.anularPedido(idCliente);
-    }
+    }*/
 }
