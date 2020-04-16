@@ -26,6 +26,14 @@ public class controlador {
     }
 
     /**
+     * Indice de página.
+     * @return 
+     */
+    @RequestMapping("/")
+    public String index(){
+        return "Bellaria";
+    }
+    /**
      * Cuando el usuario quiera iniciar sesión con la app accederá a este enlace 
      * que a su vez hará la llamada a la función pasando por parametros el email 
      * y el password.
