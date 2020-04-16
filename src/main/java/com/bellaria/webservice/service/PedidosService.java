@@ -21,25 +21,26 @@ public class PedidosService {
     /**
      * Lista todos los pedidos del cliente pasando por parametro el email 
      * del usuario.
-     * @param email
+     * @param id
      * @return Retorna una lista de pedidos que coincida con el email 
      */
-    public List<Pedidos> listarPedidosCliente(String email) {
-        return pedidosRepository.pedidosCliente(email);
+    public List<Pedidos> listarPedidosCliente(int id) {
+        return pedidosRepository.pedidosCliente(id);
     }
 
     /**
      * Si el cliente quiere realizar un pedido se pasará por parametros: la cantidad,
-     * el importe, el id del cliente y el id del producto. Retornará un valor booleano, (true)
-     * si se añadió una fila nueva en la tabla pedidos, (false) si no se añadió ninguna fila 
-     * en la tabla pedidos.
+     * el importe, el id del cliente y el id del producto.Retornará una lista 
+     * actualizada de los pedidos del cliente.
      * @param cantidad
      * @param importe
      * @param idCliente
      * @param idProducto
+     * @return 
      */
-    public void realizarPedido(int cantidad, float importe, int idCliente, int idProducto) {
+    public List<Pedidos> realizarPedido(int cantidad, float importe, int idCliente, int idProducto) {
         pedidosRepository.nuevoPedido(cantidad, importe, idCliente, idProducto);
+        return pedidosRepository.pedidosCliente(idCliente);
     }
     /**
      * Si el cliente quiere anular su pedido se cambiará el valor del campo

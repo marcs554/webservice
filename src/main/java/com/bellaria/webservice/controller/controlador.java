@@ -63,13 +63,13 @@ public class controlador {
      * Cuando el cliente quiera listar todos sus pedidos la app llamará a este
      * enlace que a su vez hará la llamada a la función recibiendo por parametro 
      * el email.
-     * @param email Ingresa el campo email del usuario.
-     * @return Retorna un json de pedidos del usuario de la base de datos a traves del campo email.
+     * @param idCliente
+     * @return Retorna un json de pedidos del usuario de la base de datos a traves del campo idCliente.
      */
      
     @GetMapping("/pedidoscliente")
-    public List<Pedidos> getPedidosCliente(@RequestParam("email") String email) {
-        return pedidosService.listarPedidosCliente(email);
+    public List<Pedidos> getPedidosCliente(@RequestParam("idcliente") int idCliente) {
+        return pedidosService.listarPedidosCliente(idCliente);
     }
     
     /**
@@ -104,10 +104,10 @@ public class controlador {
     /**
      * Cuando el usuario quiera anular uno de sus pedidos la app hara la llamada
      * a este enlace que a su vez hara la llamada a la función
-     * @param id Ingresa el id del pedido.
+     * @param idCliente Ingresa el id del pedido.
     */
     @GetMapping("/anularpedido")
-    public void anularPedido(@RequestParam("id") int id) {
-        pedidosService.anularPedido(id);
+    public void anularPedido(@RequestParam("idcliente") int idCliente) {
+        pedidosService.anularPedido(idCliente);
     }
 }

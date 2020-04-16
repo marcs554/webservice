@@ -16,11 +16,11 @@ public interface PedidosRepository extends JpaRepository<Pedidos, Integer> {
     /**
      * Retorna una lista de pedidos de la tabla pedidos de la base de datos
      * que coincida con el parametro: email.
-     * @param email Email del cliente.
+     * @param id Email del cliente.
      * @return  Retorna una lista de pedidos que coincidan con el parametro: email.
      */
-    @Query("from Pedidos as p join fetch p.cliente where p.cliente.email = ?1")
-    List<Pedidos> pedidosCliente(String email);
+    @Query("from Pedidos as p join fetch p.cliente where p.cliente.id = ?1")
+    List<Pedidos> pedidosCliente(int id);
 
     /**
      * Inserta una nueva fila en la tabla pedidos.
