@@ -82,7 +82,7 @@ public class controlador {
      * @return Retorna un valor boolean confirmando si se creó la cuenta con exito (true) o no (false).
     */
     @PostMapping("/nuevousuario")
-    public boolean registrarse(@RequestParam("nombre") String nombre, @RequestParam("localizacion") String localizacion,
+    public List<Clientes> registrarse(@RequestParam("nombre") String nombre, @RequestParam("localizacion") String localizacion,
             @RequestParam("email") String email, @RequestParam("password") String password){
         return clienteService.addNewCliente(nombre, localizacion, email, password);
     }

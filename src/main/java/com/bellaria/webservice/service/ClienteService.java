@@ -41,12 +41,12 @@ public class ClienteService {
      * @param password
      * @return Retorna un valor boolean, true si se añadio correctamente y false si ya existe un usuario con el mismo nombreEmpresa y email.
      */
-    public boolean addNewCliente(String nombreEmpresa, String localidad, String email, String password) {
+    public List<Clientes> addNewCliente(String nombreEmpresa, String localidad, String email, String password) {
         if (clienteRepository.findByNombreEmpresaAndEmail(nombreEmpresa, email).isEmpty()) {
             clienteRepository.addNewCliente(nombreEmpresa, localidad, email, password);
-            return true;
+            return clienteRepository.findByEmailAndPassword(email, password);
         } else {
-            return false;
+            return null;
         }
 
     }
