@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.bellaria.webservice.service.*;
 import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 /**
@@ -80,7 +81,7 @@ public class controlador {
      * @param password Ingresa la contraseña del usuario.
      * @return Retorna un valor boolean confirmando si se creó la cuenta con exito (true) o no (false).
     */
-    @GetMapping("/nuevousuario")
+    @PostMapping("/nuevousuario")
     public boolean registrarse(@RequestParam("nombre") String nombre, @RequestParam("localizacion") String localizacion,
             @RequestParam("email") String email, @RequestParam("password") String password){
         return clienteService.addNewCliente(nombre, localizacion, email, password);
