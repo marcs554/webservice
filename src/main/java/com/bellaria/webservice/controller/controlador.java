@@ -109,9 +109,11 @@ public class controlador {
      * Cuando el usuario quiera anular uno de sus pedidos la app hara la llamada
      * a este enlace que a su vez hara la llamada a la función
      * @param idCliente Ingresa el id del pedido.
+     * @return 
     */
     @PatchMapping("/anularpedido")
-    public void anularPedido(@RequestParam("idcliente") int idCliente) {
+    public List<Pedidos> anularPedido(@RequestParam("idcliente") int idCliente) {
         pedidosService.anularPedido(idCliente);
+        return pedidosService.listarPedidosCliente(idCliente);
     }
 }
