@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.bellaria.webservice.service.*;
 import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -94,11 +95,14 @@ public class controlador {
      * @param importe Ingresa el importe total: cantidad * precioActual.
      * @param idCliente Ingresa el id del cliente el cual hace el pedido.
      * @param idProducto Ingresa el id del producto el se quiere adquirir.
+     * @return 
     */
-    @GetMapping("/nuevopedido")
-    public void realizarPedido(@RequestParam("cantidad") int cantidad, @RequestParam("importe") float importe, 
+    @PostMapping("/nuevopedido")
+    public List<Pedidos> realizarPedido(@RequestParam("cantidad") int cantidad, @RequestParam("importe") float importe, 
             @RequestParam("idcliente") int idCliente, @RequestParam("idproducto") int idProducto) {
         pedidosService.realizarPedido(cantidad, importe, idCliente, idProducto);
+        
+        return pedidosService.listarPedidosCliente(idCliente);
     }
     
     /**
@@ -106,7 +110,7 @@ public class controlador {
      * a este enlace que a su vez hara la llamada a la función
      * @param idCliente Ingresa el id del pedido.
     */
-    @GetMapping("/anularpedido")
+    @PatchMapping("/anularpedido")
     public void anularPedido(@RequestParam("idcliente") int idCliente) {
         pedidosService.anularPedido(idCliente);
     }
