@@ -38,7 +38,6 @@ public interface PedidosRepository extends JpaRepository<Pedidos, Integer> {
     /**
      * Cambia el valor del campo idestado de la tabla pedidos a 5 'Anulado'.
      * @param id Serial del pedido.
-     * @return Retorna un integer para indicar cuantas filas se han añadido.
      */
     @Transactional
     @Modifying
