@@ -21,7 +21,7 @@ public class Pedidos implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String fechaPedido;
-    private int cantidad;
+    private float cantidad;
     private float importe;
     @ManyToOne
     @JoinColumn(name="idcliente", nullable=false)
@@ -83,13 +83,13 @@ public class Pedidos implements Serializable {
      * 
      * @return Retorna el contenido del atributo cantidad.
      */
-    public int getCantidad() {return cantidad;}
+    public float getCantidad() {return cantidad;}
 
     /**
      * 
      * @param cantidad Establece/Modifica el atributo cantidad.
      */
-    public void setCantidad(int cantidad) {this.cantidad = cantidad;}
+    public void setCantidad(float cantidad) {this.cantidad = cantidad;}
 
     /**
      * 

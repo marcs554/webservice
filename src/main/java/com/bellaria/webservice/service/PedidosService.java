@@ -38,7 +38,7 @@ public class PedidosService {
      * @param idProducto
      * @return 
      */
-    public List<Pedidos> realizarPedido(int cantidad, float importe, int idCliente, int idProducto) {
+    public List<Pedidos> realizarPedido(float cantidad, float importe, int idCliente, int idProducto) {
         pedidosRepository.nuevoPedido(cantidad, importe, idCliente, idProducto);
         return pedidosRepository.pedidosCliente(idCliente);
     }

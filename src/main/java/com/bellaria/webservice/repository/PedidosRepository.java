@@ -33,7 +33,7 @@ public interface PedidosRepository extends JpaRepository<Pedidos, Integer> {
     @Modifying
     @Query(value = "INSERT INTO pedidos (NOW(), cantidad, importe, idcliente, idproducto, idestado)"
             + "VALUES(?1,?2,?3,?4,?5,1)", nativeQuery = true)
-    void nuevoPedido(int cantidad, float importe, int idCliente, int idProducto);
+    void nuevoPedido(float cantidad, float importe, int idCliente, int idProducto);
 
     /**
      * Cambia el valor del campo idestado de la tabla pedidos a 5 'Anulado'.
