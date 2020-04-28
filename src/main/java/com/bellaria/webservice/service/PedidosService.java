@@ -41,6 +41,7 @@ public class PedidosService {
     public List<Pedidos> realizarPedido(float cantidad, float importe, int idCliente, int idProducto) {
         pedidosRepository.nuevoPedido(cantidad, importe, idCliente, idProducto);
         return pedidosRepository.pedidosCliente(idCliente);
+
     }
     /**
      * Si el cliente quiere anular su pedido se cambiará el valor del campo

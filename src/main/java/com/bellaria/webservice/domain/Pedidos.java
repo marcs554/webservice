@@ -45,7 +45,7 @@ public class Pedidos implements Serializable {
      * @param productos El producto seleccionado.
      * @param estado El estado del pedido.
      */
-    public Pedidos(int id, String fechapedido, int cantidad, float importe, Clientes cliente, Productos productos, Estado estado) {
+    public Pedidos(int id, String fechapedido, float cantidad, float importe, Clientes cliente, Productos productos, Estado estado) {
         this.id = id;
         this.fechaPedido = fechapedido;
         this.cantidad = cantidad;

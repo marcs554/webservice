@@ -19,7 +19,7 @@ public interface PedidosRepository extends JpaRepository<Pedidos, Integer> {
      * @param id Email del cliente.
      * @return  Retorna una lista de pedidos que coincidan con el parametro: email.
      */
-    @Query("from Pedidos as p join fetch p.cliente where p.cliente.id = ?1")
+    @Query("from Pedidos as p join fetch p.cliente where p.cliente.id = ?1 order by p.fechaPedido desc")
     List<Pedidos> pedidosCliente(int id);
 
     /**
@@ -31,8 +31,8 @@ public interface PedidosRepository extends JpaRepository<Pedidos, Integer> {
      */
     @Transactional
     @Modifying
-    @Query(value = "INSERT INTO pedidos (NOW(), cantidad, importe, idcliente, idproducto, idestado)"
-            + "VALUES(?1,?2,?3,?4,?5,1)", nativeQuery = true)
+    @Query(value = "INSERT INTO pedidos"
+            + "VALUES(NOW(),?1,?2,?3,?4,1)", nativeQuery = true)
     void nuevoPedido(float cantidad, float importe, int idCliente, int idProducto);
 
     /**
