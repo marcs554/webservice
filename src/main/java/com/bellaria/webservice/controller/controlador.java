@@ -97,7 +97,7 @@ public class controlador {
      * @param idProducto Ingresa el id del producto el se quiere adquirir.
      * @return 
     */
-    @GetMapping("/nuevopedido")
+    @PostMapping("/nuevopedido")
     public List<Pedidos> realizarPedido(@RequestParam("cantidad") float cantidad, @RequestParam("importe") float importe, 
             @RequestParam("idcliente") int idCliente, @RequestParam("idproducto") int idProducto) {
         pedidosService.realizarPedido(cantidad, importe, idCliente, idProducto);
