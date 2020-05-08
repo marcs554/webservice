@@ -31,7 +31,7 @@ public interface PedidosRepository extends JpaRepository<Pedidos, Integer> {
      */
     @Transactional
     @Modifying
-    @Query(value = "INSERT INTO pedidos"
+    @Query(value = "INSERT INTO pedidos (fecha_pedido, cantidad, importe, idcliente, idproducto, idestado)"
             + "VALUES(NOW(),?1,?2,?3,?4,1)", nativeQuery = true)
     void nuevoPedido(float cantidad, float importe, int idCliente, int idProducto);
 
