@@ -108,7 +108,7 @@ public class controlador {
     /**
      * Cuando el usuario quiera anular uno de sus pedidos la app hara la llamada
      * a este enlace que a su vez hara la llamada a la función
-     * @param idPedido Ingresa el id del pedido.
+     * @param idPedido Ingresa el id del pedido..
      * @return 
     */
     @PatchMapping("/anularpedido")
