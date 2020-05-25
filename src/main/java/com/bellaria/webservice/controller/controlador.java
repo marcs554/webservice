@@ -29,7 +29,7 @@ public class controlador {
 
     /**
      * Indice de página.
-     * @return 
+     * @return Retorna un String como prueba de que funciona la página
      */
     @RequestMapping("/")
     public String index(){
@@ -80,7 +80,7 @@ public class controlador {
      * @param localizacion Ingresa la localización de la empresa .
      * @param email Ingresa el email del usuario.
      * @param password Ingresa la contraseña del usuario.
-     * @return Retorna un valor boolean confirmando si se creó la cuenta con exito (true) o no (false).
+     * @return Retorna una lista de clientes en formato JSON.
     */
     @PostMapping("/nuevousuario")
     public List<Clientes> registrarse(@RequestParam("nombre") String nombre, @RequestParam("localizacion") String localizacion,
@@ -95,7 +95,7 @@ public class controlador {
      * @param importe Ingresa el importe total: cantidad * precioActual.
      * @param idCliente Ingresa el id del cliente el cual hace el pedido.
      * @param idProducto Ingresa el id del producto el se quiere adquirir.
-     * @return 
+     * @return Retorna una lista de pedidos en formato JSON
     */
     @PostMapping("/nuevopedido")
     public List<Pedidos> realizarPedido(@RequestParam("cantidad") float cantidad, @RequestParam("importe") float importe, 
@@ -109,7 +109,7 @@ public class controlador {
      * Cuando el usuario quiera anular uno de sus pedidos la app hara la llamada
      * a este enlace que a su vez hara la llamada a la función
      * @param idPedido Ingresa el id del pedido.
-     * @return 
+     * @return Retorna una lista de pedidos en formato JSON
     */
     @PatchMapping("/anularpedido")
     public List<Pedidos> anularPedido(@RequestParam("idpedido") int idPedido) {

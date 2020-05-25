@@ -19,10 +19,10 @@ public class PedidosService {
     }
 
     /**
-     * Lista todos los pedidos del cliente pasando por parametro el email 
+     * Lista todos los pedidos del cliente pasando por parametro el id del cliente 
      * del usuario.
      * @param id
-     * @return Retorna una lista de pedidos que coincida con el email 
+     * @return Retorna una lista de pedidos que coincida con el id del cliente
      */
     public List<Pedidos> listarPedidosCliente(int id) {
         return pedidosRepository.pedidosCliente(id);
